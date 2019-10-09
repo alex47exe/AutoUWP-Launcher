@@ -1,3 +1,15 @@
+#Region ;**** Directives created by AutoIt3Wrapper_GUI ****
+#AutoIt3Wrapper_Icon=icon.ico
+#AutoIt3Wrapper_Outfile=AutoUWP Launcher.exe
+#AutoIt3Wrapper_Compression=4
+#AutoIt3Wrapper_UseUpx=y
+#AutoIt3Wrapper_UPX_Parameters=-9 --strip-relocs=0 --compress-exports=0 --compress-icons=0
+#AutoIt3Wrapper_Res_Description=AutoUWP Launcher
+#AutoIt3Wrapper_Res_Fileversion=1.1.0.47
+#AutoIt3Wrapper_Res_ProductVersion=1.1.0.47
+#AutoIt3Wrapper_Res_LegalCopyright=2018-2019, SalFisher47
+#AutoIt3Wrapper_Res_requestedExecutionLevel=asInvoker
+#EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
 #NoTrayIcon
 ;#RequireAdmin
 
@@ -8,8 +20,8 @@
 #AutoIt3Wrapper_UseUpx=n
 #AutoIt3Wrapper_UPX_Parameters=-9 --strip-relocs=0 --compress-exports=0 --compress-icons=0
 #AutoIt3Wrapper_Res_Description=AutoUWP Launcher
-#AutoIt3Wrapper_Res_Fileversion=1.0.5.47
-#AutoIt3Wrapper_Res_ProductVersion=1.0.5.47
+#AutoIt3Wrapper_Res_Fileversion=1.1.0.47
+#AutoIt3Wrapper_Res_ProductVersion=1.1.0.47
 #AutoIt3Wrapper_Res_LegalCopyright=2018-2019, SalFisher47
 #AutoIt3Wrapper_Res_requestedExecutionLevel=asInvoker
 #AutoIt3Wrapper_Res_SaveSource=n
@@ -22,17 +34,17 @@
 #pragma compile(InputBoxRes, true)
 #pragma compile(CompanyName, 'SalFisher47')
 #pragma compile(FileDescription, 'AutoUWP Launcher')
-#pragma compile(FileVersion, 1.0.5.47)
+#pragma compile(FileVersion, 1.1.0.47)
 #pragma compile(InternalName, 'AutoUWP Launcher')
 #pragma compile(LegalCopyright, '2018-2019, SalFisher47')
 #pragma compile(OriginalFilename, AutoUWP Launcher.exe)
 #pragma compile(ProductName, 'AutoUWP Launcher')
-#pragma compile(ProductVersion, 1.0.5.47)
+#pragma compile(ProductVersion, 1.1.0.47)
 #EndRegion ;**** Pragma Compile ****
 
 ; === AutoUWP Launcher.au3 ========================================================================================================
 ; Title .........: AutoUWP Launcher
-; Version .......: 1.0.5.47
+; Version .......: 1.1.0.47
 ; AutoIt Version : 3.3.14.2
 ; Language ......: English
 ; Description ...: AutoUWP Launcher
@@ -191,93 +203,93 @@ If Not FileExists(StringTrimRight($launcherIni, 4) & ".txt") Then
 		FileWriteLine($hFile, $xml99[$i])
 		If $xml99[$i] == $Ini_AppFiles_Name_slash2 & "AppxManifest.xml" Then
 		;If StringInStr($xml99[$i], $Ini_AppFiles_Name & "\AppxManifest.xml") Then ; --- old method of checking for main 'AppxManifest.xml'
-			FileInstall("AppFiles\_UwpLaunch.bat", @ScriptDir & "\" & StringTrimRight($xml99[$i], 16) & "_UwpLaunch.bat", 1)
-			FileInstall("AppFiles\_UwpLaunch.exe", @ScriptDir & "\" & StringTrimRight($xml99[$i], 16) & "_UwpLaunch.exe", 1)
-			FileInstall("AppFiles\_UwpLaunch.ps1", @ScriptDir & "\" & StringTrimRight($xml99[$i], 16) & "_UwpLaunch.ps1", 1)
-			FileCopy(@ScriptDir & "\" & StringTrimRight($xml99[$i], 16) & "_UwpLaunch.ps1", @ScriptDir & "\" & StringTrimRight($xml99[$i], 16) & "_UwpLaunch1.ps1", 1)
-			FileCopy(@ScriptDir & "\" & StringTrimRight($xml99[$i], 16) & "_UwpLaunch.bat", @ScriptDir & "\UwpLaunch.bat", 1)
-			FileCopy(@ScriptDir & "\" & StringTrimRight($xml99[$i], 16) & "_UwpLaunch.exe", @ScriptDir & "\UwpLaunch.exe", 1)
-			_ReplaceStringInFile(@ScriptDir & "\" & StringTrimRight($xml99[$i], 16) & "_UwpLaunch1.ps1", "AppxManifest.xml", $xml99[$i])
-			_ReplaceStringInFile(@ScriptDir & "\" & StringTrimRight($xml99[$i], 16) & "_UwpLaunch1.ps1", "AppFiles", $Ini_AppFiles_Name)
-			FileInstall("AppFiles\_UwpActivate.bat", @ScriptDir & "\" & StringTrimRight($xml99[$i], 16) & "_UwpActivate.bat", 1)
-			FileInstall("AppFiles\_UwpActivate.exe", @ScriptDir & "\" & StringTrimRight($xml99[$i], 16) & "_UwpActivate.exe", 1)
-			FileInstall("AppFiles\_UwpActivate.ps1", @ScriptDir & "\" & StringTrimRight($xml99[$i], 16) & "_UwpActivate.ps1", 1)
-			FileCopy(@ScriptDir & "\" & StringTrimRight($xml99[$i], 16) & "_UwpActivate.ps1", @ScriptDir & "\" & StringTrimRight($xml99[$i], 16) & "_UwpActivate1.ps1", 1)
-			FileCopy(@ScriptDir & "\" & StringTrimRight($xml99[$i], 16) & "_UwpActivate.bat", @ScriptDir & "\UwpActivate.bat", 1)
-			FileCopy(@ScriptDir & "\" & StringTrimRight($xml99[$i], 16) & "_UwpActivate.exe", @ScriptDir & "\UwpActivate.exe", 1)
-			_ReplaceStringInFile(@ScriptDir & "\" & StringTrimRight($xml99[$i], 16) & "_UwpActivate1.ps1", "AppxManifest.xml", $xml99[$i])
-			_ReplaceStringInFile(@ScriptDir & "\" & StringTrimRight($xml99[$i], 16) & "_UwpActivate1.ps1", "AppFiles", $Ini_AppFiles_Name)
-			FileInstall("AppFiles\_UwpRemove.bat", @ScriptDir & "\" & StringTrimRight($xml99[$i], 16) & "_UwpRemove.bat", 1)
-			FileInstall("AppFiles\_UwpRemove.exe", @ScriptDir & "\" & StringTrimRight($xml99[$i], 16) & "_UwpRemove.exe", 1)
-			FileInstall("AppFiles\_UwpRemove.ps1", @ScriptDir & "\" & StringTrimRight($xml99[$i], 16) & "_UwpRemove.ps1", 1)
-			FileCopy(@ScriptDir & "\" & StringTrimRight($xml99[$i], 16) & "_UwpRemove.ps1", @ScriptDir & "\" & StringTrimRight($xml99[$i], 16) & "_UwpRemove1.ps1", 1)
-			FileCopy(@ScriptDir & "\" & StringTrimRight($xml99[$i], 16) & "_UwpRemove.bat", @ScriptDir & "\UwpRemove.bat", 1)
-			FileCopy(@ScriptDir & "\" & StringTrimRight($xml99[$i], 16) & "_UwpRemove.exe", @ScriptDir & "\UwpRemove.exe", 1)
-			_ReplaceStringInFile(@ScriptDir & "\" & StringTrimRight($xml99[$i], 16) & "_UwpRemove1.ps1", "AppxManifest.xml", $xml99[$i])
-			_ReplaceStringInFile(@ScriptDir & "\" & StringTrimRight($xml99[$i], 16) & "_UwpRemove1.ps1", "AppFiles", $Ini_AppFiles_Name)
+			FileInstall("AppFiles\_UWP_launch.bat", @ScriptDir & "\" & StringTrimRight($xml99[$i], 16) & "_UWP_launch.bat", 1)
+			FileInstall("AppFiles\_UWP_launch.exe", @ScriptDir & "\" & StringTrimRight($xml99[$i], 16) & "_UWP_launch.exe", 1)
+			FileInstall("AppFiles\_UWP_launch.ps1", @ScriptDir & "\" & StringTrimRight($xml99[$i], 16) & "_UWP_launch.ps1", 1)
+			FileCopy(@ScriptDir & "\" & StringTrimRight($xml99[$i], 16) & "_UWP_launch.ps1", @ScriptDir & "\" & StringTrimRight($xml99[$i], 16) & "_UWP_launch1.ps1", 1)
+			FileCopy(@ScriptDir & "\" & StringTrimRight($xml99[$i], 16) & "_UWP_launch.bat", @ScriptDir & "\UWP_launch.bat", 1)
+			FileCopy(@ScriptDir & "\" & StringTrimRight($xml99[$i], 16) & "_UWP_launch.exe", @ScriptDir & "\UWP_launch.exe", 1)
+			_ReplaceStringInFile(@ScriptDir & "\" & StringTrimRight($xml99[$i], 16) & "_UWP_launch1.ps1", "AppxManifest.xml", $xml99[$i])
+			_ReplaceStringInFile(@ScriptDir & "\" & StringTrimRight($xml99[$i], 16) & "_UWP_launch1.ps1", "AppFiles", $Ini_AppFiles_Name)
+			FileInstall("AppFiles\_UWP_activate.bat", @ScriptDir & "\" & StringTrimRight($xml99[$i], 16) & "_UWP_activate.bat", 1)
+			FileInstall("AppFiles\_UWP_activate.exe", @ScriptDir & "\" & StringTrimRight($xml99[$i], 16) & "_UWP_activate.exe", 1)
+			FileInstall("AppFiles\_UWP_activate.ps1", @ScriptDir & "\" & StringTrimRight($xml99[$i], 16) & "_UWP_activate.ps1", 1)
+			FileCopy(@ScriptDir & "\" & StringTrimRight($xml99[$i], 16) & "_UWP_activate.ps1", @ScriptDir & "\" & StringTrimRight($xml99[$i], 16) & "_UWP_activate1.ps1", 1)
+			FileCopy(@ScriptDir & "\" & StringTrimRight($xml99[$i], 16) & "_UWP_activate.bat", @ScriptDir & "\UWP_activate.bat", 1)
+			FileCopy(@ScriptDir & "\" & StringTrimRight($xml99[$i], 16) & "_UWP_activate.exe", @ScriptDir & "\UWP_activate.exe", 1)
+			_ReplaceStringInFile(@ScriptDir & "\" & StringTrimRight($xml99[$i], 16) & "_UWP_activate1.ps1", "AppxManifest.xml", $xml99[$i])
+			_ReplaceStringInFile(@ScriptDir & "\" & StringTrimRight($xml99[$i], 16) & "_UWP_activate1.ps1", "AppFiles", $Ini_AppFiles_Name)
+			FileInstall("AppFiles\_UWP_remove.bat", @ScriptDir & "\" & StringTrimRight($xml99[$i], 16) & "_UWP_remove.bat", 1)
+			FileInstall("AppFiles\_UWP_remove.exe", @ScriptDir & "\" & StringTrimRight($xml99[$i], 16) & "_UWP_remove.exe", 1)
+			FileInstall("AppFiles\_UWP_remove.ps1", @ScriptDir & "\" & StringTrimRight($xml99[$i], 16) & "_UWP_remove.ps1", 1)
+			FileCopy(@ScriptDir & "\" & StringTrimRight($xml99[$i], 16) & "_UWP_remove.ps1", @ScriptDir & "\" & StringTrimRight($xml99[$i], 16) & "_UWP_remove1.ps1", 1)
+			FileCopy(@ScriptDir & "\" & StringTrimRight($xml99[$i], 16) & "_UWP_remove.bat", @ScriptDir & "\UWP_remove.bat", 1)
+			FileCopy(@ScriptDir & "\" & StringTrimRight($xml99[$i], 16) & "_UWP_remove.exe", @ScriptDir & "\UWP_remove.exe", 1)
+			_ReplaceStringInFile(@ScriptDir & "\" & StringTrimRight($xml99[$i], 16) & "_UWP_remove1.ps1", "AppxManifest.xml", $xml99[$i])
+			_ReplaceStringInFile(@ScriptDir & "\" & StringTrimRight($xml99[$i], 16) & "_UWP_remove1.ps1", "AppFiles", $Ini_AppFiles_Name)
 			;$main_xml_found = 1
 		Else
-			FileInstall("DLC1\_UwpActivate.bat", @ScriptDir & "\" & StringTrimRight($xml99[$i], 16) & "_UwpActivate.bat", 1)
-			FileInstall("DLC1\_UwpActivate.exe", @ScriptDir & "\" & StringTrimRight($xml99[$i], 16) & "_UwpActivate.exe", 1)
-			FileInstall("DLC1\_UwpActivate.ps1", @ScriptDir & "\" & StringTrimRight($xml99[$i], 16) & "_UwpActivate.ps1", 1)
-			FileCopy(@ScriptDir & "\" & StringTrimRight($xml99[$i], 16) & "_UwpActivate.ps1", @ScriptDir & "\" & StringTrimRight($xml99[$i], 16) & "_UwpActivate1.ps1", 1)
-			_ReplaceStringInFile(@ScriptDir & "\" & StringTrimRight($xml99[$i], 16) & "_UwpActivate1.ps1", "AppxManifest.xml", $xml99[$i])
-			_ReplaceStringInFile(@ScriptDir & "\" & StringTrimRight($xml99[$i], 16) & "_UwpActivate1.ps1", "AppFiles", $Ini_AppFiles_Name)
-			FileInstall("DLC1\_UwpRemove.bat", @ScriptDir & "\" & StringTrimRight($xml99[$i], 16) & "_UwpRemove.bat", 1)
-			FileInstall("DLC1\_UwpRemove.exe", @ScriptDir & "\" & StringTrimRight($xml99[$i], 16) & "_UwpRemove.exe", 1)
-			FileInstall("DLC1\_UwpRemove.ps1", @ScriptDir & "\" & StringTrimRight($xml99[$i], 16) & "_UwpRemove.ps1", 1)
-			FileCopy(@ScriptDir & "\" & StringTrimRight($xml99[$i], 16) & "_UwpRemove.ps1", @ScriptDir & "\" & StringTrimRight($xml99[$i], 16) & "_UwpRemove1.ps1", 1)
-			_ReplaceStringInFile(@ScriptDir & "\" & StringTrimRight($xml99[$i], 16) & "_UwpRemove1.ps1", "AppxManifest.xml", $xml99[$i])
-			_ReplaceStringInFile(@ScriptDir & "\" & StringTrimRight($xml99[$i], 16) & "_UwpRemove1.ps1", "AppFiles", $Ini_AppFiles_Name)
+			FileInstall("DLC1\_UWP_activate.bat", @ScriptDir & "\" & StringTrimRight($xml99[$i], 16) & "_UWP_activate.bat", 1)
+			FileInstall("DLC1\_UWP_activate.exe", @ScriptDir & "\" & StringTrimRight($xml99[$i], 16) & "_UWP_activate.exe", 1)
+			FileInstall("DLC1\_UWP_activate.ps1", @ScriptDir & "\" & StringTrimRight($xml99[$i], 16) & "_UWP_activate.ps1", 1)
+			FileCopy(@ScriptDir & "\" & StringTrimRight($xml99[$i], 16) & "_UWP_activate.ps1", @ScriptDir & "\" & StringTrimRight($xml99[$i], 16) & "_UWP_activate1.ps1", 1)
+			_ReplaceStringInFile(@ScriptDir & "\" & StringTrimRight($xml99[$i], 16) & "_UWP_activate1.ps1", "AppxManifest.xml", $xml99[$i])
+			_ReplaceStringInFile(@ScriptDir & "\" & StringTrimRight($xml99[$i], 16) & "_UWP_activate1.ps1", "AppFiles", $Ini_AppFiles_Name)
+			FileInstall("DLC1\_UWP_remove.bat", @ScriptDir & "\" & StringTrimRight($xml99[$i], 16) & "_UWP_remove.bat", 1)
+			FileInstall("DLC1\_UWP_remove.exe", @ScriptDir & "\" & StringTrimRight($xml99[$i], 16) & "_UWP_remove.exe", 1)
+			FileInstall("DLC1\_UWP_remove.ps1", @ScriptDir & "\" & StringTrimRight($xml99[$i], 16) & "_UWP_remove.ps1", 1)
+			FileCopy(@ScriptDir & "\" & StringTrimRight($xml99[$i], 16) & "_UWP_remove.ps1", @ScriptDir & "\" & StringTrimRight($xml99[$i], 16) & "_UWP_remove1.ps1", 1)
+			_ReplaceStringInFile(@ScriptDir & "\" & StringTrimRight($xml99[$i], 16) & "_UWP_remove1.ps1", "AppxManifest.xml", $xml99[$i])
+			_ReplaceStringInFile(@ScriptDir & "\" & StringTrimRight($xml99[$i], 16) & "_UWP_remove1.ps1", "AppFiles", $Ini_AppFiles_Name)
 			;$dlc_xml_found = 1
 		EndIf
 	Next
 	;---
 	FileWriteLine($hFile, " ")
-	FileWriteLine($hFile, "Generated by AutoUWP Launcher v1.0.5 (c) 2018-2019, SalFisher47")
+	FileWriteLine($hFile, "Generated by AutoUWP Launcher v1.1.0 (c) 2018-2019, SalFisher47")
 	FileClose($hFile)
 	;---
-	FileCopy(@ScriptDir & $Ini_AppFiles_Name_slash1 & "\_UwpActivate1.ps1", @ScriptDir & "\UwpActivate.ps1", 1)
-	FileDelete(@ScriptDir & $Ini_AppFiles_Name_slash1 & "\_UwpActivate.exe")
-	FileDelete(@ScriptDir & $Ini_AppFiles_Name_slash1 & "\_UwpActivate.bat")
-	FileDelete(@ScriptDir & $Ini_AppFiles_Name_slash1 & "\_UwpActivate.ps1")
-	FileDelete(@ScriptDir & $Ini_AppFiles_Name_slash1 & "\_UwpActivate1.ps1")
+	FileCopy(@ScriptDir & $Ini_AppFiles_Name_slash1 & "\_UWP_activate1.ps1", @ScriptDir & "\UWP_activate.ps1", 1)
+	FileDelete(@ScriptDir & $Ini_AppFiles_Name_slash1 & "\_UWP_activate.exe")
+	FileDelete(@ScriptDir & $Ini_AppFiles_Name_slash1 & "\_UWP_activate.bat")
+	FileDelete(@ScriptDir & $Ini_AppFiles_Name_slash1 & "\_UWP_activate.ps1")
+	FileDelete(@ScriptDir & $Ini_AppFiles_Name_slash1 & "\_UWP_activate1.ps1")
 	;---
-	FileCopy(@ScriptDir & $Ini_AppFiles_Name_slash1 & "\_UwpRemove1.ps1", @ScriptDir & "\UwpRemove.ps1", 1)
-	FileDelete(@ScriptDir & $Ini_AppFiles_Name_slash1 & "\_UwpRemove.exe")
-	FileDelete(@ScriptDir & $Ini_AppFiles_Name_slash1 & "\_UwpRemove.bat")
-	FileDelete(@ScriptDir & $Ini_AppFiles_Name_slash1 & "\_UwpRemove.ps1")
-	FileDelete(@ScriptDir & $Ini_AppFiles_Name_slash1 & "\_UwpRemove1.ps1")
+	FileCopy(@ScriptDir & $Ini_AppFiles_Name_slash1 & "\_UWP_remove1.ps1", @ScriptDir & "\UWP_remove.ps1", 1)
+	FileDelete(@ScriptDir & $Ini_AppFiles_Name_slash1 & "\_UWP_remove.exe")
+	FileDelete(@ScriptDir & $Ini_AppFiles_Name_slash1 & "\_UWP_remove.bat")
+	FileDelete(@ScriptDir & $Ini_AppFiles_Name_slash1 & "\_UWP_remove.ps1")
+	FileDelete(@ScriptDir & $Ini_AppFiles_Name_slash1 & "\_UWP_remove1.ps1")
 	;---
-	FileCopy(@ScriptDir & $Ini_AppFiles_Name_slash1 & "\_UwpLaunch1.ps1", @ScriptDir & "\UwpLaunch.ps1", 1)
-	FileDelete(@ScriptDir & $Ini_AppFiles_Name_slash1 & "\_UwpLaunch.exe")
-	FileDelete(@ScriptDir & $Ini_AppFiles_Name_slash1 & "\_UwpLaunch.bat")
-	FileDelete(@ScriptDir & $Ini_AppFiles_Name_slash1 & "\_UwpLaunch.ps1")
-	FileDelete(@ScriptDir & $Ini_AppFiles_Name_slash1 & "\_UwpLaunch1.ps1")
+	FileCopy(@ScriptDir & $Ini_AppFiles_Name_slash1 & "\_UWP_launch1.ps1", @ScriptDir & "\UWP_launch.ps1", 1)
+	FileDelete(@ScriptDir & $Ini_AppFiles_Name_slash1 & "\_UWP_launch.exe")
+	FileDelete(@ScriptDir & $Ini_AppFiles_Name_slash1 & "\_UWP_launch.bat")
+	FileDelete(@ScriptDir & $Ini_AppFiles_Name_slash1 & "\_UWP_launch.ps1")
+	FileDelete(@ScriptDir & $Ini_AppFiles_Name_slash1 & "\_UWP_launch1.ps1")
 	;---
 	For $i=1 to $xml99[0]
 		If $xml99[$i] <> $Ini_AppFiles_Name_slash2 & "AppxManifest.xml" Then
 		;If Not StringInStr($xml99[$i], $Ini_AppFiles_Name & "\AppxManifest.xml") Then ; --- old method of checking for main 'AppxManifest.xml'
-			FileCopy(@ScriptDir & "\" & StringTrimRight($xml99[$i], 16) & "_UwpActivate1.ps1", @ScriptDir & "\_UwpActivate1.ps1", 1)
-			FileDelete(@ScriptDir & "\" & StringTrimRight($xml99[$i], 16) & "_UwpActivate1.ps1")
-			FileDelete(@ScriptDir & "\" & StringTrimRight($xml99[$i], 16) & "_UwpActivate.bat")
-			FileDelete(@ScriptDir & "\" & StringTrimRight($xml99[$i], 16) & "_UwpActivate.exe")
-			FileDelete(@ScriptDir & "\" & StringTrimRight($xml99[$i], 16) & "_UwpActivate.ps1")
-			_Appendfile(@ScriptDir & "\_UwpActivate1.ps1", @ScriptDir & "\UwpActivate.ps1")
-			FileDelete(@ScriptDir & "\_UwpActivate1.ps1")
-			FileCopy(@ScriptDir & "\" & StringTrimRight($xml99[$i], 16) & "_UwpRemove1.ps1", @ScriptDir & "\_UwpRemove1.ps1", 1)
-			FileDelete(@ScriptDir & "\" & StringTrimRight($xml99[$i], 16) & "_UwpRemove1.ps1")
-			FileDelete(@ScriptDir & "\" & StringTrimRight($xml99[$i], 16) & "_UwpRemove.bat")
-			FileDelete(@ScriptDir & "\" & StringTrimRight($xml99[$i], 16) & "_UwpRemove.exe")
-			FileDelete(@ScriptDir & "\" & StringTrimRight($xml99[$i], 16) & "_UwpRemove.ps1")
-			_Appendfile(@ScriptDir & "\_UwpRemove1.ps1", @ScriptDir & "\UwpRemove.ps1")
-			FileDelete(@ScriptDir & "\_UwpRemove1.ps1")
+			FileCopy(@ScriptDir & "\" & StringTrimRight($xml99[$i], 16) & "_UWP_activate1.ps1", @ScriptDir & "\_UWP_activate1.ps1", 1)
+			FileDelete(@ScriptDir & "\" & StringTrimRight($xml99[$i], 16) & "_UWP_activate1.ps1")
+			FileDelete(@ScriptDir & "\" & StringTrimRight($xml99[$i], 16) & "_UWP_activate.bat")
+			FileDelete(@ScriptDir & "\" & StringTrimRight($xml99[$i], 16) & "_UWP_activate.exe")
+			FileDelete(@ScriptDir & "\" & StringTrimRight($xml99[$i], 16) & "_UWP_activate.ps1")
+			_Appendfile(@ScriptDir & "\_UWP_activate1.ps1", @ScriptDir & "\UWP_activate.ps1")
+			FileDelete(@ScriptDir & "\_UWP_activate1.ps1")
+			FileCopy(@ScriptDir & "\" & StringTrimRight($xml99[$i], 16) & "_UWP_remove1.ps1", @ScriptDir & "\_UWP_remove1.ps1", 1)
+			FileDelete(@ScriptDir & "\" & StringTrimRight($xml99[$i], 16) & "_UWP_remove1.ps1")
+			FileDelete(@ScriptDir & "\" & StringTrimRight($xml99[$i], 16) & "_UWP_remove.bat")
+			FileDelete(@ScriptDir & "\" & StringTrimRight($xml99[$i], 16) & "_UWP_remove.exe")
+			FileDelete(@ScriptDir & "\" & StringTrimRight($xml99[$i], 16) & "_UWP_remove.ps1")
+			_Appendfile(@ScriptDir & "\_UWP_remove1.ps1", @ScriptDir & "\UWP_remove.ps1")
+			FileDelete(@ScriptDir & "\_UWP_remove1.ps1")
 		EndIf
 	Next
 	;---
-	ShellExecuteWait(@ScriptDir & "\UwpLaunch.bat", "", @ScriptDir)
+	ShellExecuteWait(@ScriptDir & "\UWP_launch.bat", "", @ScriptDir)
 Else
-	ShellExecuteWait(@ScriptDir & "\UwpLaunch.exe", "", @ScriptDir)
+	ShellExecuteWait(@ScriptDir & "\UWP_launch.exe", "", @ScriptDir)
 EndIf
 
 Func _AppendFile($Source, $Target)

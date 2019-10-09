@@ -1,4 +1,4 @@
-### AutoUWP Launcher v1.0.5
+### AutoUWP Launcher v1.1.0
 
 Universal *installer, launcher & uninstaller for UWP games* - will automatically install UWP games & DLC on first launch. Rename it to *Game Name_autoUWP.exe* and place it in game folder like this, making sure DLC folders are accessible next to launcher, not above one or more folder levels:
 
@@ -21,8 +21,8 @@ Universal *installer, launcher & uninstaller for UWP games* - will automatically
 ------
 
 Same as **[UniGame Launcher](https://github.com/alex47exe/UniGame-Launcher/releases)**, *AutoUWP* will run as admin at first launch, and also in the following scenarios: 
-- *C:\Program Data\SalFisher47\AutoUWP Launcher\Game Name_autoUWP.exe* is deleted
-- *Game Name_autoUWP.exe* is deleted
+- *C:\Program Data\SalFisher47\AutoUWP Launcher\Game Name_autoUWP.ini* is deleted
+- *Game Name_autoUWP.txt* is deleted
 - Whenever you change `developer_features` in *ini* file, so it can force desired option in  *Settings -> For developers -> Use developer features* 
 
 ------

@@ -1,7 +1,7 @@
 
 # ---> '.\AppxManifest.xml'
 Write-Host "   "
-Write-Host -ForegroundColor Cyan "   *** AutoUWP Launcher ... adding UWP dlc ***"
+Write-Host -ForegroundColor Cyan "   *** AutoUWP Launcher ... installing UWP dlc ***"
 Write-Host "   "
 $xmlPath = [String]$pwd +  '\AppxManifest.xml'
 $xml = [xml](Get-Content $xmlPath -ErrorAction SilentlyContinue) 
@@ -12,30 +12,31 @@ if(Test-Path $xmlPath){
     $AppId = $xml.Package.Applications.Application.ID
     $AppName =  $xml.Package.Identity.Name
     $FamName = get-appxpackage $AppName | Select PackageFamilyName
+    $FullName = get-appxpackage $AppName | Select PackageFullName
     $GameName = $xml.Package.Properties.DisplayName
     if(!$FamName){
-        Write-Host -ForegroundColor Green "   $AppName --->"
-        Write-Host -ForegroundColor Green "      adding $GameName ..."
+        Write-Host -ForegroundColor Green "   installing dlc ---> "
+        Write-Host -ForegroundColor Green "      $GameName ($AppName) ... "
         Add-AppxPackage -Path $xmlPath -Register
-        Write-Host -ForegroundColor Green "         DONE "
+        Write-Host -ForegroundColor Green "         $GameName IS INSTALLED"
         Write-Host "   "
-        $FamName = get-appxpackage $AppName | Select PackageFamilyName
+        #Pause
+        #Exit
         }
     else{
         $FamName = $FamName.PackageFamilyName
         $param = $FamName + '!' + $AppId
-        Write-Host -ForegroundColor Green "   $AppName --->"
-        Write-Host -ForegroundColor Green "      adding $GameName ..."
-        Write-Host -ForegroundColor Red "         DLC IS ALREADY INSTALLED"
+        Write-Host -ForegroundColor Green "   installing dlc ---> "
+        Write-Host -ForegroundColor Green "      $GameName ($AppName) ... "
+        Write-Host -ForegroundColor Green "         $GameName IS INSTALLED"
         Write-Host "   "
         #Pause
-        #Start-Process  explorer.exe shell:AppsFolder\$param
         #Exit
         }
     }
  else{
     Write-Host -ForegroundColor Red '   .\AppxManifest.xml not found!'
-    Write-Host -ForegroundColor Red '   Copy UwpActivate.bat, UwpActivate.exe and UwpActivate.ps1 next to .\AppFiles folder!'
+    Write-Host -ForegroundColor Red '   Make sure autoUWP launcher is next to .\AppFiles folder!'
     #Pause
     #Exit
     }
